@@ -1,0 +1,6 @@
+name: SkeletonAI
+main: soradore\skeleton\ai\main
+author: soradore
+load: POSTWORLD
+version: 1.0.0
+api: [3.14.0]
