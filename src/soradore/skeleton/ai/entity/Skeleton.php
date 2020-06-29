@@ -22,8 +22,8 @@ class Skeleton extends Monster {
     public $height = 1.9;
     
     public function getName() : string{
-		return "Skeleton";
-	}
+	return "Skeleton";
+    }
 
     public function entityBaseTick(int $tickDiff = 1): bool
     {
@@ -126,7 +126,7 @@ class Skeleton extends Monster {
     }
 
     public function getXpDropAmount() : int{
-		return 0;
-	}
+	return 0;
+    }
 
 }
