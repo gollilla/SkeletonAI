@@ -5,7 +5,7 @@ namespace soradore\skeleton\ai\entity;
 use pocketmine\level\Level;
 use pocketmine\entity\Monster;
 use pocketmine\entity\Entity;
-use pocketmine\PLayer;
+use pocketmine\Player;
 use pocketmine\math\Vector3;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
