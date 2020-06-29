@@ -16,13 +16,14 @@ class Skeleton extends Monster {
 
     private $target = null;
     private $speed = 0.28;
+    private $coolTime = 0;
 
     public $width = 0.6;
     public $height = 1.9;
     
     public function getName() : string{
-	return "Skeleton";
-    }
+		return "Skeleton";
+	}
 
     public function entityBaseTick(int $tickDiff = 1): bool
     {
@@ -33,6 +34,7 @@ class Skeleton extends Monster {
         }
         $hasUpdate = parent::entityBaseTick($tickDiff);
         $this->attackTime -= $tickDiff;
+        $this->coolTime -= $tickDiff;
 
         if($this->attackTime > 0)
             return false;
@@ -49,8 +51,15 @@ class Skeleton extends Monster {
         $speed = $this->getSpeed();
         $this->lookAt($target);
 
-        if($this->distance($target) < 1)
+        if($this->distance($target) <= 1){
+            if($this->coolTime < 0){
+                $ev = new EntityDamageByEntityEvent($this, $target, EntityDamageEvent::CAUSE_ENTITY_ATTACK, 3);;
+                $target->attack($ev);
+                $this->coolTime = 23;
+            }
             return $hasUpdate;
+        }
+            
 
         $moveX = sin(-deg2rad($this->yaw)) * $speed;
         $moveZ = cos(-deg2rad($this->yaw)) * $speed;
@@ -117,7 +126,7 @@ class Skeleton extends Monster {
     }
 
     public function getXpDropAmount() : int{
-	return 0;
-    }
+		return 0;
+	}
 
 }
