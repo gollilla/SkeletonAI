@@ -1,5 +1,5 @@
 # SkeletonAI
 
 ## Authors
-- soradore
-- suinua
+- soradore  
+- [suinua](https://twitter.com/suinua?s=20&t=vCO-1wJ4GdInxlwYfEoLvA)
