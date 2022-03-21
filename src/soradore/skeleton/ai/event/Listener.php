@@ -8,7 +8,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\entity\Entity;
 use soradore\skeleton\ai\entity\Skeleton;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
 class Listener implements EventListener {
 
@@ -26,19 +26,6 @@ class Listener implements EventListener {
 
     public function onDamage(EntityDamageEvent $ev)
     {
-        $entity = $ev->getEntity();
-        if($ev instanceof EntityDamageByEntityEvent)
-        {
-            $damager = $ev->getDamager();
-            if($damager instanceof Player)
-            {
-                if($entity instanceof Skeleton)
-                {
-                    if(!$entity->hasTarget()){
-                        $entity->setTarget($damager);
-                    }  
-                }
-            }
-        }
+       //
     }
 }

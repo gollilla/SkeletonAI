@@ -109,8 +109,15 @@ class Skeleton extends Living {
 
     public function attack(EntityDamageEvent $source): void
     {
-        if($source instanceof EntityDamageByEntityEvent)
+        if($source instanceof EntityDamageByEntityEvent){
             $source->setKnockBack(0.5);
+            $damager = $source->getDamager();
+            if($damager instanceof Player) {
+                if(!$this->hasTarget()) {
+                    $this->setTarget($damager);
+                }
+            }
+        }
         parent::attack($source);
         $this->attackTime = 17;
         
