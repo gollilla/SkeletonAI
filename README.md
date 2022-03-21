@@ -1,1 +1,5 @@
 # SkeletonAI
+
+## Authors
+- soradore
+- suinua
