@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\entity\Entity;
 use soradore\skeleton\ai\entity\Skeleton;
 use pocketmine\player\Player;
+use pocketmine\network\mcpe\protocol\PlayerFogPacket;
 
 class Listener implements EventListener {
 
@@ -17,15 +18,11 @@ class Listener implements EventListener {
         $this->plugin = $plugin;
     }
 
-    /*public function onJoin(PlayerJoinEvent $ev){
+    public function onJoin(PlayerJoinEvent $ev){
         $player = $ev->getPlayer();
-        $nbt = Entity::createBaseNBT($player);
-        $skeleton = Entity::createEntity("Skeleton", $player->getLevel(), $nbt);
-        $skeleton->spawnToAll();
-    }*/
-
-    public function onDamage(EntityDamageEvent $ev)
-    {
-       //
+        $pk = PlayerFogPacket::create([
+            'soradore:test'
+        ]);
+        $player->getNetworkSession()->sendDataPacket($pk);
     }
 }

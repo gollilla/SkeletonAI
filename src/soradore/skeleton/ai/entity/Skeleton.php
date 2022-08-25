@@ -19,6 +19,7 @@ class Skeleton extends Living {
 
     private $speed = 0.28;
     private $coolTime = 0;
+    private $attkTime = 0;
 
     public static function getNetworkTypeId() : string{ return EntityIds::SKELETON; }
 
@@ -46,18 +47,15 @@ class Skeleton extends Living {
     public function entityBaseTick(int $tickDiff = 1): bool
     {
         $world = $this->getWorld();
-        $time = $world->getTimeOfDay();
-        if(0 <= $time && $time < World::TIME_NIGHT){
-            $this->kill();
-        }
         $hasUpdate = parent::entityBaseTick($tickDiff);
-        $this->attackTime -= $tickDiff;
+        $this->attkTime -= $tickDiff;
         $this->coolTime -= $tickDiff;
 
-        if($this->attackTime > 0)
+        //$this->setNameTag("attk: " . $this->attkTime);
+        if($this->attkTime > 0)
             return false;
         else
-            $this->attackTime = 0;
+            $this->attkTime = 0;
         
         if($this->getTarget() == null) {
             if ($this->isNeutral) return $hasUpdate;//中立の状態なら処理を終了
@@ -103,7 +101,7 @@ class Skeleton extends Living {
         $this->motion->x = $moveX;
         $this->motion->z = $moveZ;
 
-        return true;
+        return $hasUpdate;
     }
 
 
@@ -119,8 +117,9 @@ class Skeleton extends Living {
             }
         }
         parent::attack($source);
-        $this->attackTime = 17;
-        
+        if($this->attkTime <= 0) {
+            $this->attkTime = 15;
+        }
     }
 
 
