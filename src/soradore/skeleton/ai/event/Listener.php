@@ -20,9 +20,9 @@ class Listener implements EventListener {
 
     public function onJoin(PlayerJoinEvent $ev){
         $player = $ev->getPlayer();
-        $pk = PlayerFogPacket::create([
+        /*$pk = PlayerFogPacket::create([
             'soradore:test'
         ]);
-        $player->getNetworkSession()->sendDataPacket($pk);
+        $player->getNetworkSession()->sendDataPacket($pk);*/
     }
 }
