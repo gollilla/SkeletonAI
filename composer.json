@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "pocketmine/pocketmine-mp": "^5.19"
+    }
+}

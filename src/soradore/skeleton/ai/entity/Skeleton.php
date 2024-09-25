@@ -2,13 +2,10 @@
 
 namespace soradore\skeleton\ai\entity;
 
-use pocketmine\world\World;
 use pocketmine\entity\Living;
-use pocketmine\entity\Entity;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
-use pocketmine\math\Vector3;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
